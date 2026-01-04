@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HayatDefterim - Görevlerim</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        /* Sayfanın footer'ı en alta itmesi için flex yapısı */
+        html, body {
+            height: 100%;
+        }
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 120px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            flex: 1 0 auto;
+        }
+
+        /* ===== NAVBAR TASARIMI ===== */
+        .navbar {
+            background-color: #1e1e1e !important;
+            border-bottom: 1px solid #333;
+        }
+        .navbar-nav .nav-link {
+            color: #c9c9c9 !important;
+            transition: all 0.2s ease-in-out;
+            padding: 8px 20px !important;
+            margin: 0 5px;
+        }
+        .navbar-nav .nav-link.active {
+            background: linear-gradient(135deg, #0d6efd, #6f42c1) !important;
+            color: white !important;
+            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3) !important;
+            font-weight: 600 !important;
+            border-radius: 50px !important;
+        }
+        @media (min-width: 992px) {
+            .navbar-collapse { display: flex !important; justify-content: space-between; width: 100%; }
+            .navbar-nav { position: absolute; left: 50%; transform: translateX(-50%); }
+        }
+        .btn-kayit {
+            background: linear-gradient(135deg, #0d6efd, #6f42c1);
+            color: white !important;
+            border: none;
+            transition: opacity 0.2s, box-shadow 0.3s;
+        }
+        .btn-giris {
+            background-color: transparent !important;
+            color: #6f42c1 !important;
+            border: 2px solid #6f42c1;
+            transition: all 0.3s;
+        }
+
+        /* ===== DASHBOARD ===== */
+        .task-dashboard {
+            background-color: #1e1e1e;
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #333;
+            margin-bottom: 40px;
+        }
+        .counter-box {
+            display: flex; align-items: center; gap: 15px; padding: 10px 20px;
+            border-radius: 15px; background-color: #252525; border: 1px solid #3d3d3d;
+        }
+        .btn-create-task {
+            background: linear-gradient(135deg, #0d6efd, #6f42c1);
+            color: white; border: none; padding: 12px 25px; border-radius: 12px;
+            font-weight: 600; transition: all 0.3s;
+        }
+
+        /* ===== MODAL ===== */
+        .modal-content { background-color: #1e1e1e; border: 1px solid #333; border-radius: 20px; color: white; }
+        .form-control { background-color: #2c2c2c; border: 1px solid #444; color: white; }
+        .form-control::placeholder { color: rgba(255, 255, 255, 0.7) !important; }
+
+        /* Renk Seçici */
+        .color-selector { display: flex; gap: 12px; margin-top: 10px; }
+        .color-option { width: 35px; height: 35px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; display: inline-block; }
+        .color-selector input[type="radio"] { display: none; }
+        .color-selector input[type="radio"]:checked + .color-option { border-color: white; transform: scale(1.2); }
+        .bg-tunc-purple { background-color: #6f42c1; }
+        .bg-tunc-blue   { background-color: #0d6efd; }
+        .bg-tunc-green  { background-color: #198754; }
+        .bg-tunc-red    { background-color: #dc3545; }
+        .bg-tunc-orange { background-color: #fd7e14; }
+        .bg-tunc-pink   { background-color: #d63384; }
+
+        /* ===== FOOTER (İSTEDİĞİN GRİ ÇİZGİLİ BÖLÜM) ===== */
+        footer {
+            flex-shrink: 0;
+            padding: 40px 0;
+            border-top: 1px solid #333; /* İşte o gri çizgi */
+            margin-top: 100px;
+        }
+        .footer-text {
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand-lg py-3 fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold d-flex align-items-center gap-2" href="site.html">
+                <img src="logo.png" style="height:32px;">
+                HayatDefterim
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="bi bi-list text-white fs-2"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="site.html">Anasayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="notlarim.html">Notlarım</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gorevlerim.html">Görevlerim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hakkimizda.html">Hakkımızda</a></li>
+                </ul>
+                <div class="ms-auto d-flex gap-2">
+                    <a href="#" class="btn btn-kayit rounded-pill px-4 py-2">Kayıt Ol</a>
+                    <a href="#" class="btn btn-giris rounded-pill px-4 py-2">Giriş Yap</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="task-dashboard d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div class="d-flex gap-4 flex-wrap">
+                <div class="counter-box">
+                    <i class="bi bi-check-circle-fill text-success fs-4"></i>
+                    <div><p class="mb-0 text-secondary small">Tamamlanmış</p><p class="mb-0 fw-bold fs-4">0</p></div>
+                </div>
+                <div class="counter-box">
+                    <i class="bi bi-clock-history text-info fs-4"></i>
+                    <div><p class="mb-0 text-secondary small">Aktif</p><p class="mb-0 fw-bold fs-4">0</p></div>
+                </div>
+            </div>
+            <button class="btn-create-task" data-bs-toggle="modal" data-bs-target="#gorevModal">
+                <i class="bi bi-plus-lg me-2"></i> Görev Oluştur
+            </button>
+        </div>
+
+        <div class="text-center mt-5 opacity-50">
+            <i class="bi bi-clipboard2-pulse display-1"></i>
+            <h4 class="mt-3">Henüz bir görev bulunmuyor.</h4>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center">
+    <div class="container">
+        <p class="footer-text mb-0">© 2025 HayatDefterim - Hayatınızı Organize Edin.</p>
+    </div>
+</footer>
+
+<div class="modal fade" id="gorevModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg">
+            <div class="modal-header px-4 pt-4 border-0">
+                <h5 class="modal-title fw-bold">Yeni Görev Planla</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body px-4">
+                <form id="taskForm">
+                    <div class="mb-4">
+                        <label class="form-label small text-secondary fw-bold">GÖREV BAŞLIĞI</label>
+                        <input type="text" class="form-control form-control-lg fs-6" placeholder="Örn: Matematik Proje Ödevi">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label small text-secondary fw-bold">KATEGORİ RENGİ</label>
+                        <div class="color-selector">
+                            <label><input type="radio" name="taskColor" value="#6f42c1" checked><span class="color-option bg-tunc-purple"></span></label>
+                            <label><input type="radio" name="taskColor" value="#0d6efd"><span class="color-option bg-tunc-blue"></span></label>
+                            <label><input type="radio" name="taskColor" value="#198754"><span class="color-option bg-tunc-green"></span></label>
+                            <label><input type="radio" name="taskColor" value="#dc3545"><span class="color-option bg-tunc-red"></span></label>
+                            <label><input type="radio" name="taskColor" value="#fd7e14"><span class="color-option bg-tunc-orange"></span></label>
+                            <label><input type="radio" name="taskColor" value="#d63384"><span class="color-option bg-tunc-pink"></span></label>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label small text-secondary fw-bold">BİTİŞ TARİHİ</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small text-secondary fw-bold">GÖREV DETAYLARI</label>
+                        <textarea class="form-control" rows="3" placeholder="Görevin içeriği hakkında kısa bir not..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer px-4 pb-4 border-0">
+                <button type="button" class="btn btn-dark rounded-pill px-4 py-2" data-bs-dismiss="modal" style="background-color: #2c2c2c;">Vazgeç</button>
+                <button type="button" class="btn-create-task px-4 py-2">Kaydet ve Oluştur</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
