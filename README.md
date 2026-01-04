@@ -1,1 +1,1 @@
-# Cevrim-Ici-Not-Defteri-Gorev-Takip-Sistemi
+Sitenin amacı online olarak not tutmak, kendimize ve hedeflerimize uygun görevler koyup onları takip edebilmektir. Notlarımızı ve görevlerimizi renkleriyle kişiselleştirebiliyoruz buda görsel olarak hoş görünüyor.
